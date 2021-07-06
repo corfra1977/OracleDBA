@@ -1,0 +1,17 @@
+-- Error report -
+-- Connection Failed
+-- Error Message = ORA-01045: user <name> lacks CREATE SESSION privilege; logon denied
+
+// After creating the user you must assign the opportunity to access the Database
+
+// Solution:
+
+1. alter user <created username> identified by <password>;
+
+2. GRANT CREATE SESSION TO cor_fra;  // Now the new user can access the database;
+
+// You can also grant system privileges with the admin option.
+
+3. GRANT CREATE SESSION TO <created username> WITH ADMIN OPTION;
+
+-- see the guide to grant users with special privileges ->https://ss64.com/ora/grant.html

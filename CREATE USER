@@ -1,0 +1,39 @@
+--Error report -
+--ORA-65096: invalid common user or role name
+--65096. 00000 -  "invalid common user or role name"
+
+// Prerequisites ->You must have the CREATE USER system privilege. 
+
+// Solution:
+// to create a new user you must first alter the session
+
+1. Alter session set "_oracle_script"= true;
+
+// Then check the TABLESPACE names
+
+2. SELECT *FROM user_tablespaces;
+
+// check also the Profile names
+
+3. select * from dba_profiles;
+
+// then run the sript to create the user
+
+4. CREATE USER <name>
+    IDENTIFIED BY <system password>
+    DEFAULT TABLESPACE <tablespaces name>
+    QUOTA 10M ON <tablespaces name> 
+    TEMPORARY TABLESPACE temp
+    QUOTA 5M ON system 
+    PROFILE <profiles name>;
+
+5. Example
+    CREATE USER cor_fra 
+    IDENTIFIED BY <psw>
+    DEFAULT TABLESPACE users
+    QUOTA 10M ON users 
+    TEMPORARY TABLESPACE temp
+    QUOTA 5M ON system 
+    PROFILE default;
+
+--see the guide to creating users with special needs->https://docs.oracle.com/cd/B28359_01/server.111/b28286/statements_8003.htm#i2103003

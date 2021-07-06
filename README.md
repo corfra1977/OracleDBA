@@ -1,5 +1,6 @@
 # OracleDBA
 Easy DB Administrator
+
 👋 Hi, I’m @corfra1977
 👀 I’m interested in SQL DB
 🌱 I’m currently learning Oracle SQL

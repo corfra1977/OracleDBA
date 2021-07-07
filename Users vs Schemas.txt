@@ -17,3 +17,7 @@ left outer join (select distinct user_name username,'Y' default_password from sy
 left outer join (select schema_name username,'Y' sysaux,decode(count(*),1,min(occupant_desc)) occupant_desc from v$sysaux_occupants group by schema_name)
  using(username)
 order by created,username;
+
+-- SYS and SYSTEM Users are automatically created when you install Oracle Database with the password that you supplied by the installation, and they are both automatically granted the DBA role.
+-- SYS-> This account can perform all administrative functions. You must not create any tables in the SYS schema.SYS is granted the SYSDBA privilege, enables a user to perform high-level administrative tasks.
+-- SYSTEM->This account can also perform all administrative functions except the Backup&Recovery and Database upgrade.

@@ -1,0 +1,19 @@
+-- Oracle Database automatically creates a schema when you create a user.
+-- If in your environment there are 25 users created via create user. They are all schemas.
+
+// View all User/Schemas
+
+select created,username,oracle_maintained,common,no_exp,no_expdp,no_sby,default_password,sysaux,occupant_desc
+from dba_users 
+left outer join 
+ (select distinct name username,'Y' no_expdp from sys.ku_noexp_tab where obj_type='SCHEMA') 
+ using(username)
+left outer join (select distinct name username,'Y' no_exp from sys.exu8usr)
+ using(username)
+left outer join (select distinct name username,'Y' no_sby from system.logstdby$skip_support where action in (0,-1))
+ using(username)
+left outer join (select distinct user_name username,'Y' default_password from sys.default_pwd$)
+ using(username)
+left outer join (select schema_name username,'Y' sysaux,decode(count(*),1,min(occupant_desc)) occupant_desc from v$sysaux_occupants group by schema_name)
+ using(username)
+order by created,username;

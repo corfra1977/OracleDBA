@@ -1,0 +1,41 @@
+-- A tablespace is a database storage unit that groups related logical structures together. 
+-- The database data files are stored in tablespaces.
+-- Before you can create a tablespace, you must create a database to contain it. 
+-- The primary tablespace in any database is the SYSTEM tablespace.
+
+// View DB Tablespace
+
+SELECT TABLESPACE_NAME "TABLESPACE", EXTENT_MANAGEMENT,FORCE_LOGGING,
+BLOCK_SIZE,
+SEGMENT_SPACE_MANAGEMENT
+FROM DBA_TABLESPACES;
+
+// View DB Tablespace with resource
+
+In the connections panel, do right click on the DBname by which you connected.
+From the shortcut menu, choose Manage Database option, will open a window displaying tablespaces.
+
+-- Adding a tablespace to a database is a structural change that requires a backup.
+
+
+
+// Add a tablespace
+// Retrieves the paht in TABLESPACE_NAME column with:
+
+SELECT
+FILE_NAME, 
+BLOCKS, 
+TABLESPACE_NAME
+FROM DBA_DATA_FILES;
+
+// Then:
+
+create tablespace <Tablespace Name>
+  logging
+  datafile '..path..\name.dbf' 
+  size 32m 
+  autoextend on 
+  next 32m maxsize 2048m
+  extent management local;
+
+

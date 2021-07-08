@@ -6,12 +6,12 @@
 
 // Solution:
 
-1. alter user <created username> identified by <password>;
+ALTER USER <created username> IDENTIFIED BY <password>;
 
-2. GRANT CREATE SESSION TO cor_fra;  // Now the new user can access the database;
+GRANT CREATE SESSION TO cor_fra;  // Now the new user can access the database;
 
 // You can also grant system privileges with the admin option.
 
-3. GRANT CREATE SESSION TO <created username> WITH ADMIN OPTION;
+GRANT CREATE SESSION TO <created username> WITH ADMIN OPTION;
 
 -- see the guide to grant users with special privileges ->https://ss64.com/ora/grant.html

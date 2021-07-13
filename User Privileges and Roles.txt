@@ -1,0 +1,49 @@
+					--PRIVILEGES--
+
+--There are over 100 distinct system privileges. Each system privilege allows a user to perform a particular database operation or class of database operations.
+
+--If you grant a privilege to a user, then Oracle adds the privilege to the user's privilege domain. The user can immediately exercise the privilege.
+
+--If you grant a privilege to PUBLIC, then Oracle adds the privilege to the privilege domains of each user. All users can immediately perform operations authorized by the privilege.
+
+--When you grant a privilege on "ANY" object (for example, CREATE ANY CLUSTER), you give the user access to that type of object in all schemas, including the SYS schema. 
+   In order to secure the data dictionary, ensure that the O7_DICTIONARY_ACCESSIBILITY initialization parameter is set to FALSE.
+   When this parameter is not set to FALSE, the ANY privilege applies to the data dictionary, and a malicious user with ANY privilege could access or alter data dictionary tables.
+
+
+//Granting a System Privilege to a User:
+
+//To grant the CREATE SESSION system privilege to the sample user corfra, allowing corfra to log on to Oracle, issue the following statement:
+
+	GRANT CREATE SESSION 
+   		TO corfra;
+
+//To grant the ALTER DATABASE system privilege to the sample user corfra
+
+	GRANT ALTER DATABASE 
+   		TO corfra;
+
+//You can find here more Privileges....https://docs.oracle.com/cd/A97630_01/server.920/a96540/statements_912a.htm#2063440
+
+
+					--ROLE--
+
+--A role groups several privileges and roles, so that they can be granted to and revoked from users simultaneously. A role must be enabled for a user before it can be used by the user.
+
+--Oracle Corporation recommends that you design your own roles for database security
+
+//Granting Roles to a User:
+
+	GRANT CONNECT, RESOURCE, DBA 
+		TO corfra;
+
+//These roles are predefined Role(CONNECT, RESOURCE and DBA) 
+//You can find here more Roles....https://docs.oracle.com/cd/A97630_01/server.920/a96540/statements_912a.htm#2063440
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+                         --Granting Privileges on Columns--
+
+--You can grant INSERT, UPDATE, or REFERENCES privileges on individual columns in a table.
+
+//Example: Rows in the employees Table (Department_ID = NOT NULL)
+
+EMPLOYEE_ID FIRST_NAME  LAST_NAME      SALARY COMMISSION_PCT DEPARTMENT_ID
+----------- ----------- ------------- ------- -------------- -------------
+ 	100 Steven 	King 	  	24000 				90
+ 	101 Neena 	Kochhar 	17000 				90
+ 	102 Lex 	De Haan 	17000 				90
+ 	103 Alexander 	Hunold 		9000 				60
+ 	107 Diana 	Lorentz 	4200 				60
+ 	149 Eleni 	Zlotkey 	10500 		.2 		80
+ 	174 Ellen 	Abel 		11000 		.3 		80
+
+--The following statement grants INSERT privilege on the Commission_PCT column of the Employee table to corfra:
+
+	GRANT INSERT (COMMISSION_PCT) ON EMPLOYEE TO corfra;
+
+--In another example, object privilege for the SALARY and COMMISSION_PCT columns of the Employee table are granter to the users corfra and serpico:
+
+	GRANT INSERT(SALARY,COMMISSION_PCT) ON emp TO corfra, serpico;
+
+--Caution: The table contains columns on which NOT NULL constraints are defined(DEPARTMENT_ID).
+--In this case,  the grantee will not be able to insert rows into the table and will receive an error.
+--To avoid this situation, make sure that each NOT NULL column is either insertable or has a non-NULL default value.
+

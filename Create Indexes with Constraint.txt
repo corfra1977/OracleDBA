@@ -1,0 +1,52 @@
+//Assume that you create the Departments table in an empty schema:
+
+	CREATE TABLE department(
+ 	id_department NUMBER,
+ 	name_department VARCHAR2(50)
+	);
+
+--This table has no indexes, no constraints. 
+--If we add a primary key on the id_department column, an index will also be created automatically.
+
+	ALTER TABLE department ADD CONSTRAINT dip_pk PRIMARY KEY (id_department);
+
+//To verify it just run the following query:
+
+	SELECT index_name, index_type, table_name, table_type, uniqueness
+	FROM user_indexes;
+
+--and check the result.
+
+
+//Suppose you create the Employees table in the same schema:
+
+	CREATE TABLE employees(
+ 	id_employee NUMBER, 
+ 	surname VARCHAR2(50), 
+ 	name VARCHAR2(50), 
+ 	date_of_birth DATE, 
+ 	identity_number VARCHAR2(16),
+ 	id_department NUMBER
+	);
+
+--This table has no indexes, no constraints. 
+--If we add a primary key on the id_employee column, an index will also be automatically created.
+
+	ALTER TABLE employees ADD CONSTRAINT emp_pk PRIMARY KEY (id_employee);
+
+//To verify it just run the following query:
+
+
+	SELECT index_name, index_type, table_name, table_type, uniqueness
+	FROM user_indexes;
+
+--and check the result.
+
+--If you add the UNIQUE constraint on the identity_number column of the table used, another index will be automatically created:
+
+	ALTER TABLE employees ADD CONSTRAINT id_num_unique UNIQUE(identity_number);
+
+--Relaunching the query can verify the result.
+
+
+

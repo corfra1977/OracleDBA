@@ -12,7 +12,7 @@ FROM DBA_TABLESPACES;
 
 // View DB Tablespace with resource
 
-In the connections panel, do right click on the DBname by which you connected.
-From the shortcut menu, choose Manage Database option, will open a window displaying tablespaces.
+-- In the connections panel, do right click on the DBname by which you connected.
+-- From the shortcut menu, choose Manage Database option, will open a window displaying tablespaces.
 
 -- Adding a tablespace to a database is a structural change that requires a backup.

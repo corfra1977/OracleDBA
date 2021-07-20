@@ -12,9 +12,11 @@ CREATE TABLE employees
     job_title  VARCHAR( 255 ) NOT NULL
    );
 
-REM INSERTING into EMPLOYEES
-SET DEFINE OFF;
-Insert into EMPLOYEES (EMPLOYEE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE,HIRE_DATE,MANAGER_ID,JOB_TITLE) values (107,'Summer','Payne','summer.payne@example.com','515.123.8181',to_date('07-JUN-16','DD-MON-RR'),106,'Public Accountant');
+REM INSERTING into EMPLOYEES  --REM, or short for REMARK, is used in SQL*Plus to indicate the beginning of a comment in a SQL script
+SET DEFINE OFF;               --The SET DEFINE OFF command in Oracle prevents Oracle from doing any variable substitution.
+
+Insert into EMPLOYEES (EMPLOYEE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE,HIRE_DATE,MANAGER_ID,JOB_TITLE) values 
+(107,'Summer','Payne','summer.payne@example.com','515.123.8181',to_date('07-JUN-16','DD-MON-RR'),106,'Public Accountant');
 Insert into EMPLOYEES (EMPLOYEE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE,HIRE_DATE,MANAGER_ID,JOB_TITLE) values (106,'Rose','Stephens','rose.stephens@example.com','515.123.8080',to_date('07-JUN-16','DD-MON-RR'),2,'Accounting Manager');
 Insert into EMPLOYEES (EMPLOYEE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE,HIRE_DATE,MANAGER_ID,JOB_TITLE) values (101,'Annabelle','Dunn','annabelle.dunn@example.com','515.123.4444',to_date('17-SEP-16','DD-MON-RR'),2,'Administration Assistant');
 Insert into EMPLOYEES (EMPLOYEE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE,HIRE_DATE,MANAGER_ID,JOB_TITLE) values (1,'Tommy','Bailey','tommy.bailey@example.com','515.123.4567',to_date('17-JUN-16','DD-MON-RR'),null,'President');

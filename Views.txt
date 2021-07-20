@@ -1,0 +1,25 @@
+-- A view is a logical representation of one or more tables. In essence, a view is a stored query.
+-- A view derives its data from the tables on which it is based, called base tables. 
+-- All operations performed on a view actually affect the base tables.
+-- For an example of the use of views, consider the employees table in the filetext "Create Table for View and Indexes tutorial.txt" which has several columns and numerous rows.
+
+// To allow users to see only three of these columns or only specific rows, you could create a view as follows:
+
+CREATE VIEW staff AS
+ SELECT employee_id, last_name, job_title
+ FROM employees;
+
+-- Users can query views, and with some restrictions they can perform DML on views. 
+-- Operations performed on a view affect data in some base table of the view and are subject to the integrity constraints and triggers of the base tables.
+
+// The following example creates a view of the employees table:
+
+ CREATE VIEW staff_where AS
+ SELECT employee_id, last_name, job_title 
+ FROM employees
+ WHERE manager_id = 47
+ WITH CHECK OPTION CONSTRAINT staff_where_47_cnst;
+
+-- The defining query references only rows for job_title = Sales Representative, namely manager_id 47. 
+-- The CHECK OPTION creates the view with a constraint so that INSERT and UPDATE statements issued against the view cannot result in rows that the view cannot select. 
+-- Thus, rows for employees whose manager_id = 47 can be inserted, but not rows for manager_id 9,46,50....
